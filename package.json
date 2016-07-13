@@ -1,0 +1,23 @@
+{
+  "name": "base-jumper",
+  "version": "0.1.0",
+  "description": "A simple MySQL toolkit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylanized/base-jumper.git"
+  },
+  "keywords": [
+    "mysql",
+    "database"
+  ],
+  "author": "Dylan Hassinger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dylanized/base-jumper/issues"
+  },
+  "homepage": "https://github.com/dylanized/base-jumper#readme"
+}
