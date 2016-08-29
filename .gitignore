@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+composer.lock
+/logs/*
+.vagrant
+.nvmrc
+.npm-debug*
+npm-debug*
+.env
