@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/dylanized/base-jumper/issues"
   },
-  "homepage": "https://github.com/dylanized/base-jumper#readme"
+  "homepage": "https://github.com/dylanized/base-jumper#readme",
+  "dependencies": {
+    "knex": "^0.11.10",
+    "mysql": "^2.11.1",
+    "unit.js": "^2.0.0"
+  }
 }
