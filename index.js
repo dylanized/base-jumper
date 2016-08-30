@@ -52,6 +52,26 @@ module.exports = function(config) {
 		
 		}
 		
+		// Get Single Row 
+					
+		module.getRow = function(table, props, done) {
+		
+			// build query
+			var query = knex(table).select("*").where(props).toString();
+			              
+			//run query		  
+			connection.query(query, function(err, rows, fields) {
+
+				// if row found, return it
+				if (rows && rows[0]) done(err, rows[0]);
+			
+				// else return err
+				else done(err);
+			  	
+			});
+		
+		}		
+		
 		// Get Num Rows 
 					
 		module.getNumRows = function(table, props, done) {
