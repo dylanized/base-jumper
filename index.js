@@ -11,6 +11,22 @@ module.exports = function(config) {
 		var connection = mysql.createConnection(config);					 
 		connection.connect();
 		
+	// inserters
+	
+		module.insertRow = function(table, props, done) {
+		
+			// build query
+			var query = knex(table).insert(props).toString();
+			              
+			//run query		  
+			connection.query(query, function(err, rows, fields) {
+			
+				return done(err, rows);
+			  	
+			});		
+		
+		}
+		
 	// getters
 	
 		// Get Num Tables
@@ -70,7 +86,43 @@ module.exports = function(config) {
 			  	
 			});
 		
-		}		
+		}
+		
+		// Get Rows By Ascending
+					
+		module.getRowsAsc = function(table, props, orderby, done) {
+		
+			// if order is array
+		
+			// build query
+			var query = knex(table).select("*").where(props).orderBy(orderby, "asc").toString();
+			              
+			//run query		  
+			connection.query(query, function(err, rows, fields) {
+			
+				return done(err, rows);
+			  	
+			});
+		
+		}	
+		
+		// Get Rows By Descending
+					
+		module.getRowsDesc = function(table, props, order, done) {
+		
+			// if order is array
+		
+			// build query
+			var query = knex(table).select("*").where(props).orderBy(orderby, "desc").toString();
+			              
+			//run query		  
+			connection.query(query, function(err, rows, fields) {
+			
+				return done(err, rows);
+			  	
+			});
+		
+		}			
 		
 		// Get Num Rows 
 					
