@@ -108,7 +108,7 @@ module.exports = function(config) {
 		
 		// Get Rows By Descending
 					
-		module.getRowsDesc = function(table, props, order, done) {
+		module.getRowsDesc = function(table, props, orderby, done) {
 		
 			// if order is array
 		
