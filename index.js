@@ -86,38 +86,6 @@ module.exports = function(config) {
 			  	
 			});
 		
-		}
-		
-		// Get Rows By Ascending
-					
-		module.getRowsAsc = function(table, props, orderby, done) {
-		
-			// build query
-			var query = knex(table).select("*").where(props).orderBy(orderby, "asc").toString();
-			              
-			// run query		  
-			connection.query(query, function(err, rows, fields) {
-			
-				return done(err, rows);
-			  	
-			});
-		
-		}	
-		
-		// Get Rows By Descending
-					
-		module.getRowsDesc = function(table, props, orderby, done) {
-		
-			// build query
-			var query = knex(table).select("*").where(props).orderBy(orderby, "desc").toString();
-			              
-			// run query		  
-			connection.query(query, function(err, rows, fields) {
-			
-				return done(err, rows);
-			  	
-			});
-		
 		}	
 		
 		// Get Rows By Config
