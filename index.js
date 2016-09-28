@@ -92,12 +92,10 @@ module.exports = function(config) {
 					
 		module.getRowsAsc = function(table, props, orderby, done) {
 		
-			// if order is array
-		
 			// build query
 			var query = knex(table).select("*").where(props).orderBy(orderby, "asc").toString();
 			              
-			//run query		  
+			// run query		  
 			connection.query(query, function(err, rows, fields) {
 			
 				return done(err, rows);
@@ -110,19 +108,54 @@ module.exports = function(config) {
 					
 		module.getRowsDesc = function(table, props, orderby, done) {
 		
-			// if order is array
-		
 			// build query
 			var query = knex(table).select("*").where(props).orderBy(orderby, "desc").toString();
 			              
-			//run query		  
+			// run query		  
 			connection.query(query, function(err, rows, fields) {
 			
 				return done(err, rows);
 			  	
 			});
 		
-		}			
+		}	
+		
+		// Get Rows By Config
+					
+		module.getRowsBy = function(table, props, config, done) {
+		
+			// if no select, set * default
+			if (!config.select) config.select = "*";
+			
+			// start query command
+			var command = "var query = knex(table).select(config.select)";
+			
+			// if no order, set asc default
+			if (!config.order) config.order = "asc";
+		
+			// if orderby, add it to command
+			if (config.orderBy) command += ".orderBy('" + config.orderBy + "', '" + config.order + "')";
+			
+			// if limit, add it to command
+			if (config.limit) command += ".limit(" + config.limit + ")";
+
+			// if offset, add it to command
+			if (config.offset) command += ".offset(" + config.offset + ")";
+			
+			// add toString
+			command += ".toString()";
+		
+			// build query from command
+			eval(command);
+			              
+			// run query		  
+			connection.query(query, function(err, rows, fields) {
+			
+				return done(err, rows);
+			  	
+			});
+		
+		}				
 		
 		// Get Num Rows 
 					
