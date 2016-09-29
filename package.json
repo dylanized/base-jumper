@@ -1,6 +1,6 @@
 {
   "name": "base-jumper",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A simple MySQL toolkit",
   "main": "index.js",
   "scripts": {
