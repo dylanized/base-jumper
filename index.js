@@ -18,7 +18,7 @@ module.exports = function(config) {
 			// build query
 			var query = knex(table).insert(props).toString();
 			              
-			//run query		  
+			// run query		  
 			connection.query(query, function(err, rows, fields) {
 			
 				return done(err, rows);
@@ -59,7 +59,7 @@ module.exports = function(config) {
 			// build query
 			var query = knex(table).select("*").where(props).toString();
 			              
-			//run query		  
+			// run query		  
 			connection.query(query, function(err, rows, fields) {
 			
 				return done(err, rows);
@@ -75,7 +75,7 @@ module.exports = function(config) {
 			// build query
 			var query = knex(table).select("*").where(props).toString();
 			              
-			//run query		  
+			// run query		  
 			connection.query(query, function(err, rows, fields) {
 
 				// if row found, return it
@@ -140,6 +140,22 @@ module.exports = function(config) {
 			});		
 		
 		}
+		
+	// deleters
+	
+		module.deleteRows = function(table, props, done) {
+		
+			// build query
+			var query = knex(table).where(props).del().toString();
+			              
+			// run query		  
+			connection.query(query, function(err, rows, fields) {
+			
+				return done(err, rows);
+			  	
+			});		
+		
+		}		
 		
 	// checkers
 
