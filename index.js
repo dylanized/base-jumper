@@ -27,6 +27,20 @@ module.exports = function(config) {
 		
 		}
 		
+		module.updateRow = function(table, where, update, done) {
+		
+			// build query
+			var query = knex(table).where(where).update(update).toString();
+			              
+			// run query		  
+			connection.query(query, function(err, rows, fields) {
+			
+				return done(err, rows);
+			  	
+			});
+		
+		}
+		
 	// getters
 	
 		// Get Num Tables
@@ -96,7 +110,7 @@ module.exports = function(config) {
 			if (!config.select) config.select = "*";
 			
 			// start query command
-			var command = "var query = knex(table).select(config.select)";
+			var command = "var query = knex(table).select(config.select).where(props)";
 			
 			// if no order, set asc default
 			if (!config.order) config.order = "asc";
